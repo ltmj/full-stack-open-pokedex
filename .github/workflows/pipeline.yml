@@ -35,7 +35,7 @@ jobs:
           wait-on: http://localhost:5000
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: deploy app
-        if: ${{ github.event_name == 'push'}}
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, '+'), '#skip') }}
         run: flyctl deploy --remote-only
   tag_release:
     needs: [simple_deployment_pipeline]
@@ -43,11 +43,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push'}}
+        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, '+'), '#skip') }}
         uses: anothrNick/github-tag-action@1.36.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
           DRY_RUN: false
           WITH_V: true
-#11.15 done now
+#11.16 done now hopefully

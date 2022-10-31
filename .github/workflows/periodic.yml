@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  health check:
+  health_check:
     runs-on: ubuntu-20.04
     steps:
       - name: Ping /health

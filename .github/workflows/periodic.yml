@@ -1,0 +1,19 @@
+name: Periodic Health Check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
+
+jobs:
+  health check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Ping /health
+        uses: jtalk/url-health_check-action@v2
+        with:
+          url: https://paraspokedex.fly.dev/periodic
+          

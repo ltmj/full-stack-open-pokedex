@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Ping /health
-        uses: jtalk/url-health_check-action@v2
+        uses: jtalk/url-health-check-action@v2
         with:
           url: https://paraspokedex.fly.dev/periodic
           

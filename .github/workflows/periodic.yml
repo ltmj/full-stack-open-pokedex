@@ -1,12 +1,8 @@
 name: Periodic Health Check
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches: [master]
-    types: [opened, synchronize]
+  schedule:
+    - cron: '*/2 * * * *'
 
 jobs:
   health_check:
@@ -16,4 +12,4 @@ jobs:
         uses: jtalk/url-health-check-action@v2
         with:
           url: https://paraspokedex.fly.dev/periodic
-#ping /periodic          
+#ping /periodic every 2 minutes         

@@ -11,5 +11,5 @@ jobs:
       - name: Ping /health
         uses: jtalk/url-health-check-action@v2
         with:
-          url: https://paraspokedex.fly.dev/periodic
+          url: https://paraspokedex.fly.dev/periodi
 #ping /periodic every 2 minutes         
